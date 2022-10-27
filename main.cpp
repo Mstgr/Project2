@@ -1,3 +1,13 @@
+/*
+*	Project 2 by Michael Steiger
+* 
+*	This program asks the user questions and the user has to provide an answer.
+*	If the user enter the correct answer the score will increase by 1, if not 
+*	decrease by 1.
+* 
+* 
+*/
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -10,7 +20,7 @@
 
 using namespace std;
 
-int main(int argc, const char* argv[]) {
+int main(int argc,  char* argv[]) {
 
 
 	ifstream readFile;
@@ -25,22 +35,22 @@ int main(int argc, const char* argv[]) {
 	int numWrong = 0;
 	
 
-	readFile.open("database.txt"); // change to argv[1] when submitting
+	readFile.open(argv[1]); // change to argv[1] when submitting "database.txt"
 
 	if (readFile.is_open()) {
 
 		getline(readFile, question);  //get the first line of the file and parse the first 3 slots; 
-		question = question.substr(2, question.size());
+		question = question.substr(3, question.size());
 		getline(readFile, answer);
-		answer = answer.substr(2, answer.size());
+		answer = answer.substr(3, answer.size());
 		readQandA[count] = question;
 		readQandA[count + 1] = answer;
 		count += 2;
 		while (!readFile.eof()) {
 			getline(readFile, question); 
-			question = question.substr(2, question.size());
+			question = question.substr(3, question.size());
 			getline(readFile, answer);
-			answer = answer.substr(2, answer.size());
+			answer = answer.substr(3, answer.size());
 			readQandA[count] = question;
 			readQandA[count + 1] = answer;
 			count += 2;
@@ -87,7 +97,7 @@ int main(int argc, const char* argv[]) {
 
 	printFinal = printResult(questions, numCorrect, numWrong);
 
-	cout << printFinal;
+	cout << printFinal << endl;
 	
 	return 0;
 }
