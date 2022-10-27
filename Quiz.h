@@ -4,8 +4,8 @@
 class Quiz {
 
 private: 
-	std::string question = { "" };
-	std::string answer = { "" };
+	std::string question{ "" };
+	std::string answer{ "" };
 	static int score;
 
 public:
@@ -18,7 +18,7 @@ public:
 	std::string getQuestion();
 	std::string getAnswer();
 	static int getScore();
-	void static updateScore(int);
+	static void updateScore(int);
 
 	friend std::string printResult(int, int, int);
 };
